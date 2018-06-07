@@ -154,6 +154,11 @@ Application: &ApplicationDefaults
     # the application side of the network
     Organizations:
 
+    Policies:
+      MyPolicy:
+        Type: Signature
+        Rule: “Org1.Peer AND Org2.Peer”
+
 ################################################################################
 #
 #   SECTION: Capabilities
