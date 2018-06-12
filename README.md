@@ -11,3 +11,5 @@
 	peer channel fetch config config_block.pb -o orderer.ptwist.eu:7050 -c $CHANNEL_NAME --tls --cafile $ORDERER_CA
 
 	configtxlator proto_decode --input config_block.pb --type common.Block | jq .data.data[0].payload.data.config > config.json
+
+	Copy JSON file for edit: docker cp <containerId>:/file/path/within/container /host/path/target
