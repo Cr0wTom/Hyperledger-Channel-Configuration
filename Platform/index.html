@@ -21,6 +21,7 @@
     angularTodo.controller('mainController', function($scope, $http) {
         $scope.names = [];
     $scope.isVisible=true;
+    $scope.voteVisible=false;
 
         $scope.addVote = function(valorvoto) {
             $http.get('http://localhost:8080/votar/'+$scope.idvoter+'/'+valorvoto)
@@ -36,6 +37,7 @@
             //$scope.vote="";
         }
         $scope.inquiry = function() {
+          $scope.voteVisible=true;
             $http.get('http://localhost:8080/query')
                 .success(function(data) {
                     $scope.Blockchain = data;
@@ -237,7 +239,7 @@
 </section>
 <!-- ##### Welcome Area End ##### -->
 <div class="form-group">
-       <table cellpadding="1" cellspacing="1" class="table table-dark">
+<table ng-show="voteVisible" cellpadding="1" cellspacing="1" class="table table-dark">
           <tr>
               <th scope="col">Voter ID</th>
               <th scope="col">Document</th>
