@@ -93,16 +93,8 @@ func (s *SmartContract) queryVoter(APIstub shim.ChaincodeStubInterface, args []s
 
 func (s *SmartContract) initLedger(APIstub shim.ChaincodeStubInterface) sc.Response {
 	voters := []Asset_Votes{
-	      	Asset_Votes{Security: "PIN", Factor: "100", Vote: "SINVOTAR", OwnerId: "12345", OwnerDesc: "Homero Simpson"},
-      		Asset_Votes{Security: "PIN", Factor: "120", Vote: "SINVOTAR", OwnerId: "67890", OwnerDesc: "Peter Griffin"},
-      		Asset_Votes{Security: "PIN", Factor: "200", Vote: "SINVOTAR", OwnerId: "654321", OwnerDesc: "Jhon Smith"},
-      		Asset_Votes{Security: "PIN", Factor: "1000", Vote: "SINVOTAR", OwnerId: "098765", OwnerDesc: "Chaparron Bonaparte"},
-      		Asset_Votes{Security: "PIN", Factor: "50", Vote: "SINVOTAR", OwnerId: "A23421", OwnerDesc: "Sun Wukong"},
-      		Asset_Votes{Security: "PIN", Factor: "80", Vote: "SINVOTAR", OwnerId: "98765", OwnerDesc: "Seiya Shiryu"},
-      		Asset_Votes{Security: "PIN", Factor: "250", Vote: "SINVOTAR", OwnerId: "765890", OwnerDesc: "Ned Flanders"},
-      		Asset_Votes{Security: "PIN", Factor: "40", Vote: "SINVOTAR", OwnerId: "777888", OwnerDesc: "Carlos Donoso"},
-      		Asset_Votes{Security: "PIN", Factor: "5", Vote: "SINVOTAR", OwnerId: "877899", OwnerDesc: "Ramon Valdes"},
-      		Asset_Votes{Security: "PIN", Factor: "500", Vote: "SINVOTAR", OwnerId: "131313", OwnerDesc: "Roberto Gomez"},
+	      	Asset_Votes{Security: "PIN", Factor: "100", Vote: "VOTE", OwnerId: "12345", OwnerDesc: "Homero Simpson"},
+
 	}
 
 	i := 0
@@ -171,7 +163,7 @@ func (s *SmartContract) doVoting(APIstub shim.ChaincodeStubInterface, args []str
 	vote := Asset_Votes{}
 
 
-	
+
 	json.Unmarshal(voterAsBytes, &vote)
 	if (vote.Vote == "SINVOTAR"){
 		fmt.Println("You havent voted before, vote accepted!")
@@ -179,7 +171,7 @@ func (s *SmartContract) doVoting(APIstub shim.ChaincodeStubInterface, args []str
 	}else{
 		return shim.Error("Already voted before!, you can only vote once")
 	}
-	
+
 
 	voterAsBytes, _ = json.Marshal(vote)
 	APIstub.PutState(args[0], voterAsBytes)

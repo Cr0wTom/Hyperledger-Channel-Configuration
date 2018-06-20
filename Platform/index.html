@@ -23,8 +23,8 @@
     $scope.isVisible=true;
     $scope.voteVisible=false;
 
-        $scope.addVote = function(valorvoto) {
-            $http.get('http://localhost:8080/votar/'+$scope.idvoter+'/'+valorvoto)
+        $scope.addVote = function(votevalue) {
+            $http.get('http://localhost:8080/votar/'+$scope.idvoter+'/'+votevalue)
                 .success(function(data) {
                     console.log(data)
                     alert(data);
