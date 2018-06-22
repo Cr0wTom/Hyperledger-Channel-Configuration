@@ -3,7 +3,7 @@ cd ../basic-network
 docker kill $(docker ps -q)
 docker rm $(docker ps -aq)
 docker rmi $(docker images dev-* -q)
-cd ../voting
+cd ../Platform
 ./startFabric.sh
 rm -r hfc-key-store
 node enrollAdmin.js

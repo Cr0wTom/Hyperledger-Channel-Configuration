@@ -153,7 +153,7 @@ Fabric_Client.newDefaultKeyValueStore({ path: store_path
 
 	if(results && results[1] && results[1].event_status === 'VALID') {
 		console.log('Successfully committed the change to the ledger by the peer');
-		callback("Voto aceptado por la blockchain");
+		callback("Vote accepted by the blockchain");
 	} else {
 		console.log('Transaction failed to be committed to the ledger due to ::'+results[1].event_status);
 	}
@@ -203,7 +203,7 @@ Fabric_Client.newDefaultKeyValueStore(	{ path: store_path
                 if (query_responses[0] instanceof Error) {
                         console.error("error from query = ", query_responses[0]);
                 } else {
-                        
+
 			var finalresponse;
 			finalresponse= query_responses[0].toString();
 			console.log("Response is ", finalresponse);
@@ -213,7 +213,7 @@ Fabric_Client.newDefaultKeyValueStore(	{ path: store_path
         } else {
                 console.log("No payloads were returned from query");
         }
-	
+
 }).catch((err) => {
         console.error('Failed to query successfully :: ' + err);
 })
@@ -230,7 +230,7 @@ graph: function (callback) {
 			var crypto_store = Fabric_Client.newCryptoKeyStore({path: store_path});
 			crypto_suite.setCryptoKeyStore(crypto_store);
 			fabric_client.setCryptoSuite(crypto_suite);
-	
+
 			// get the enrolled user from persistence, this user will sign all requests
 			return fabric_client.getUserContext('user1', true);
 	}).then((user_from_store) => {
@@ -240,7 +240,7 @@ graph: function (callback) {
 			} else {
 					throw new Error('Failed to get user1.... run registerUser.js');
 			}
-	
+
 			// queryCar chaincode function - requires 1 argument, ex: args: ['CAR4'],
 			// queryAllCars chaincode function - requires no arguments , ex: args: [''],
 		   const request = {
@@ -249,7 +249,7 @@ graph: function (callback) {
 					fcn: 'queryAllVotes',
 					args: ['']
 			};
-	
+
 			// send the query proposal to the peer
 			return channel.queryByChaincode(request);
 	}).then((query_responses) => {
@@ -258,7 +258,7 @@ graph: function (callback) {
 			if (query_responses && query_responses.length == 1) {
 					if (query_responses[0] instanceof Error) {
 							console.error("error from query = ", query_responses[0]);
-					} else {	
+					} else {
 						var finalresponse;
 						finalresponse= query_responses[0].toString();
 						console.log("Response is ", finalresponse);
@@ -268,7 +268,7 @@ graph: function (callback) {
 			} else {
 					console.log("No payloads were returned from query");
 			}
-		
+
 	}).catch((err) => {
 			console.error('Failed to query successfully :: ' + err);
 	})

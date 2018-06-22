@@ -93,7 +93,10 @@ func (s *SmartContract) queryVoter(APIstub shim.ChaincodeStubInterface, args []s
 
 func (s *SmartContract) initLedger(APIstub shim.ChaincodeStubInterface) sc.Response {
 	voters := []Asset_Votes{
-	      	Asset_Votes{Security: "PIN", Factor: "100", Vote: "VOTE", OwnerId: "12345", OwnerDesc: "Homero Simpson"},
+	      	Asset_Votes{Security: "PIN", Factor: "100", Vote: "YES", OwnerId: "12345", OwnerDesc: "AUTh"},
+					Asset_Votes{Security: "PIN", Factor: "100", Vote: "NO", OwnerId: "12345", OwnerDesc: "Almeris"},
+					Asset_Votes{Security: "PIN", Factor: "100", Vote: "YES", OwnerId: "12345", OwnerDesc: "Eolas"},
+					Asset_Votes{Security: "PIN", Factor: "100", Vote: "YES", OwnerId: "12345", OwnerDesc: "Nuro"},
 
 	}
 
@@ -165,12 +168,12 @@ func (s *SmartContract) doVoting(APIstub shim.ChaincodeStubInterface, args []str
 
 
 	json.Unmarshal(voterAsBytes, &vote)
-	if (vote.Vote == "SINVOTAR"){
+	// if (vote.Vote == "SINVOTAR"){
 		fmt.Println("You havent voted before, vote accepted!")
 		vote.Vote = args[1]
-	}else{
-		return shim.Error("Already voted before!, you can only vote once")
-	}
+//	}else{
+//		return shim.Error("Already voted before!, you can only vote once")
+//	}
 
 
 	voterAsBytes, _ = json.Marshal(vote)
