@@ -94,7 +94,7 @@ func (s *SmartContract) queryVoter(APIstub shim.ChaincodeStubInterface, args []s
 func (s *SmartContract) initLedger(APIstub shim.ChaincodeStubInterface) sc.Response {
 	voters := []Asset_Votes{
 	      	Asset_Votes{Security: "PIN", Factor: "100", Vote: "YES", OwnerId: "12345", OwnerDesc: "AUTh"},
-					Asset_Votes{Security: "PIN", Factor: "100", Vote: "NO", OwnerId: "12345", OwnerDesc: "Almeris"},
+					Asset_Votes{Security: "PIN", Factor: "100", Vote: "NO", OwnerId: "12345", OwnerDesc: "Almerys"},
 					Asset_Votes{Security: "PIN", Factor: "100", Vote: "YES", OwnerId: "12345", OwnerDesc: "Eolas"},
 					Asset_Votes{Security: "PIN", Factor: "100", Vote: "YES", OwnerId: "12345", OwnerDesc: "Nuro"},
 
